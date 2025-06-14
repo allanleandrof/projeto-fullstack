@@ -14,3 +14,9 @@
 npm install react-router-dom axios json-server react-bootstrap bootstrap react-icons react-input-mask
 ```
 
+### Lembre - se, é necessário importar o bootstrap no arquivo main.jsx
+
+```js
+import 'bootstrap/dict/css/bootstrap.min.css'
+```
+
