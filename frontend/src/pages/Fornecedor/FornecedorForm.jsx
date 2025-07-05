@@ -1,10 +1,17 @@
 import React, { useEffect } from 'react'
-import { Button, Col, Container, Form, OverlayTrigger, Row, Tooltip } from 'react-bootstrap'
-import { FaQuestionCircle } from 'react-icons/fa'
+import { Button, Col, Container, Form, OverlayTrigger, Row, Tooltip, Modal } from 'react-bootstrap'
+import { useNavigate } from 'react-router-dom'
+import { FaCheck, FaCheckCircle, FaQuestionCircle } from 'react-icons/fa'
 import { useState } from 'react'
 import axios from 'axios'
 
 const FornecedorForm = () => {
+
+    const navigate = useNavigate()
+
+    const apiUrl = import.meta.env.VITE_API_URL  
+
+    const [modalAberto, setModalAberto] = useState(false)
 
     const [fornecedor, setFornecedor] = useState({
         nome: '',
@@ -57,8 +64,10 @@ const FornecedorForm = () => {
             cnpj: fornecedor.cnpj.replace(/[^\d]/g, '')
         }
 
-        axios.post('http://localhost:3000/Fornecedores', fornecedorData)
-        .then(response => console.log("Fornecedor cadastrado com sucesso"))
+        axios.post(`${apiUrl}/Fornecedores`, fornecedorData)
+        .then(response => {
+            console.log("Fornecedor cadastrado com sucesso: ", response.data)
+            setModalAberto(true)})
         .catch(error => console.error("Erro ao cadastrar fornecedor: ", error))
     }
 
@@ -228,8 +237,27 @@ const FornecedorForm = () => {
                 </Col>
             </Row>
 
-            <Button type='submit' variant='primary'>Salvar</Button>
+            <Button type='submit' variant='success'>Salvar</Button>
         </Form>
+
+        {/** Modal de Sucesso */}
+        <Modal show={modalAberto} onHide={() => { setModalAberto(false); 
+            navigate('/listar-fornecedores') }}>
+            <Modal.Header closeButton>
+                <Modal.Title>
+                    <FaCheckCircle className='text-success' /> Sucesso:
+                </Modal.Title>
+                <Modal.Body>
+                    Fornecedor adicionado com sucesso!
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button variant='success' onClick={() =>  
+                        navigate('/listar-fornecedores') }>
+                        Fechar
+                    </Button>
+                </Modal.Footer>
+            </Modal.Header>
+        </Modal>
 
     </Container>
   )

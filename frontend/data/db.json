@@ -16,6 +16,38 @@
         "estado": "Paraíba",
         "pais": "Brasil"
       }
+    },
+    {
+      "id": "5b25",
+      "nome": "Empresa LTDA",
+      "email": "empresa@gmail.com",
+      "cnpj": "123121251251",
+      "tipoFornecedor": "COMUM",
+      "endereco": {
+        "cep": "58108282",
+        "logradouro": "Rua Edite Martins Ferreira",
+        "numero": "365",
+        "complemento": "",
+        "bairro": "Renascer",
+        "estado": "Paraíba",
+        "pais": "Brasil"
+      }
+    },
+    {
+      "id": "0335",
+      "nome": "Empresa LTDA",
+      "email": "empresa@gmail.com",
+      "cnpj": "123121251251",
+      "tipoFornecedor": "COMUM",
+      "endereco": {
+        "cep": "58108282",
+        "logradouro": "Rua Edite Martins Ferreira",
+        "numero": "365",
+        "complemento": "",
+        "bairro": "Renascer",
+        "estado": "Paraíba",
+        "pais": "Brasil"
+      }
     }
   ],
   "Produtos": [],
