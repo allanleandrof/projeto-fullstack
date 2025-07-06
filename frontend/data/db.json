@@ -1,59 +1,26 @@
 {
   "Fornecedores": [
     {
-      "id": "88b8",
-      "nome": "Empresa LTDA",
-      "email": "empresa@gmail.com",
-      "cnpj": "14891624000150",
-      "tipoFornecedor": "COMUM",
-      "endereco": {
-        "cep": "58108282",
-        "logradouro": "Rua Edite Martins Ferreira",
-        "numero": "365",
-        "complemento": "",
-        "bairro": "Renascer",
-        "cidade": "Cabedelo",
-        "estado": "Paraíba",
-        "pais": "Brasil"
-      }
-    },
-    {
-      "id": "5b25",
-      "nome": "Empresa LTDA",
-      "email": "empresa@gmail.com",
-      "cnpj": "123121251251",
-      "tipoFornecedor": "COMUM",
-      "endereco": {
-        "cep": "58108282",
-        "logradouro": "Rua Edite Martins Ferreira",
-        "numero": "365",
-        "complemento": "",
-        "bairro": "Renascer",
-        "estado": "Paraíba",
-        "pais": "Brasil"
-      }
-    },
-    {
-      "id": "0335",
-      "nome": "Empresa LTDA",
-      "email": "empresa@gmail.com",
-      "cnpj": "123121251251",
-      "tipoFornecedor": "COMUM",
-      "endereco": {
-        "cep": "58108282",
-        "logradouro": "Rua Edite Martins Ferreira",
-        "numero": "365",
-        "complemento": "",
-        "bairro": "Renascer",
-        "estado": "Paraíba",
-        "pais": "Brasil"
-      }
-    },
-    {
       "id": "dbf8",
       "nome": "Empresa LTDA",
       "email": "empresa@gmail.com",
       "cnpj": "1241526146334",
+      "tipoFornecedor": "COMUM",
+      "endereco": {
+        "cep": "58108282",
+        "logradouro": "Rua Edite Martins Ferreira",
+        "numero": "365",
+        "complemento": "",
+        "bairro": "Renascer",
+        "estado": "Paraíba",
+        "pais": "Brasil"
+      }
+    },
+    {
+      "id": "ec5c",
+      "nome": "Empresa LTDA",
+      "email": "empresa@gmail.com",
+      "cnpj": "4325423534",
       "tipoFornecedor": "COMUM",
       "endereco": {
         "cep": "58108282",
