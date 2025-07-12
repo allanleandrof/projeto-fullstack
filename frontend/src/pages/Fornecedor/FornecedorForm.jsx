@@ -1,11 +1,28 @@
 import React, { useEffect } from 'react'
 import { Button, Col, Container, Form, OverlayTrigger, Row, Tooltip, Modal } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { FaCheck, FaCheckCircle, FaQuestionCircle } from 'react-icons/fa'
 import { useState } from 'react'
 import axios from 'axios'
 
 const FornecedorForm = () => {
+
+    // Estou verificando se o ID está na URL, se sim, é para editar
+    // Se não, é para adicionar um novo fornecedor
+    const { id } = useParams()
+
+    // UseEffect para carregar as informações para edição
+    useEffect(() => {
+        if (id) {
+            axios.get(`${apiUrl}/Fornecedores/${id}`)
+            .then(response => {
+                setFornecedor(response.data)
+            })
+            .catch(error => {
+                console.error("Erro ao carregar fornecedor: ", error)
+            })
+        }
+    }, [id])
 
     const navigate = useNavigate()
 
@@ -64,19 +81,29 @@ const FornecedorForm = () => {
             cnpj: fornecedor.cnpj.replace(/[^\d]/g, '')
         }
 
-        axios.post(`${apiUrl}/Fornecedores`, fornecedorData)
+        const request = id
+            ? axios.put(`${apiUrl}/Fornecedores/${id}`, fornecedorData)
+            : axios.post(`${apiUrl}/Fornecedores`, fornecedorData)
+
+        request.then(()=> setModalAberto(true))
+        request.catch(error => {
+            console.error("Erro ao salvar fornecedor: ", error)
+            alert("Erro ao salvar fornecedor. Tente novamente.")
+        })
+
+        /*axios.post(`${apiUrl}/Fornecedores`, fornecedorData)
             .then(response => {
                 console.log("Fornecedor cadastrado com sucesso: ", response.data)
                 setModalAberto(true)
             })
-            .catch(error => console.error("Erro ao cadastrar fornecedor: ", error))
+            .catch(error => console.error("Erro ao cadastrar fornecedor: ", error))*/
     }
 
     return (
         <Container className="mt-4">
             <h2 className="mb-4 d-flex align-items-center">
                 { /* Por enquanto, apenas o texto de Adicionar, depois colocamos Editar tb */}
-                Adicionar Fornecedor
+                {id ? 'Editar Fornecedor' : 'Adicionar Fornecedor'}
                 <OverlayTrigger
                     placement="right"
                     overlay={<Tooltip>Preencha os dados do fornecedor</Tooltip>}
@@ -253,7 +280,7 @@ const FornecedorForm = () => {
                 </Modal.Header>
 
                 <Modal.Body>
-                    Fornecedor adicionado com sucesso!
+                    {id ? 'Fornecedor editado com sucesso!' : 'Fornecedor adicionado com sucesso!'}
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant='success' onClick={() =>
